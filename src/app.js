@@ -1,13 +1,13 @@
 const express = require('express')
 const cors = require('cors')
-const requestLogger = require('../src/utility/requestLogger')
-const errorLogger = require('../src/utility/errorLogger')
-const connection = require('../src/utility/connection')
+const requestLogger = require('./utility/requestLogger')
+const errorLogger = require('./utility/errorLogger')
+const connection = require('./utility/connection')
 const cookieParser = require("cookie-parser")
 const app = express();
 const dotenv = require('dotenv')
 const helmet = require('helmet')
-const router = require('../src/routing/routing')
+const router = require('./routing/routing')
 
 dotenv.config()
 connection()

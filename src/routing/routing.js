@@ -2,7 +2,6 @@ const express = require("express");
 const routing = express.Router();
 const service = require("../service/user");
 const authService = require("../service/auth.service");
-const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const authMiddleware = require("../middleware/auth.middleware")
 dotenv.config();
