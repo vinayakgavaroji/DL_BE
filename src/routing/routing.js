@@ -93,6 +93,17 @@ routing.get('/students/holding-book/:bookId', async (req, res, next) => {
   }
 });
 
+routing.delete('/deleteBook/:bookId', async (req, res, next) => {
+  const bookId = req.params.bookId;
+  try{
+    await service.deleteBookById(bookId);
+    res.status(200).json({message: "Deleted Successfully"})
+  }catch (error){
+    res.status(500).json({ message: error.message });
+    next(error)
+  }
+})
+
 routing.use(authMiddleware.auth);
 
 routing.get('/protected', (req, res) => {
