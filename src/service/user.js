@@ -30,8 +30,8 @@ user.issueBooks = async (rollNo, bookData) => {
     throw new Error("Student not found");
   }
 
-  if(student.issuedBooks.length > 0){
-    throw new Error("Please return the previous book")
+  if(student.issuedBooks.length > 3){
+    throw new Error("A student can hold upto 3 books, please return previous books.!")
   }
 
   const book = await Book.findOne({ id: bookData.bookId });
@@ -66,6 +66,15 @@ user.findStudentByBookId = async (bookId) => {
     return studentsWithBook;
   } catch (error) {
     throw new Error(`Failed to find students with bookId ${bookId}: ${error.message}`);
+  }
+}
+
+user.deleteBookById = async (bookId) => {
+  try{
+    const book = await Book.deleteOne({_id: bookId})
+    return book;
+  }catch (error) {
+    throw new Error(`Failed to delete book ${book}: ${error.message}`);
   }
 }
 
